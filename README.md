@@ -47,7 +47,6 @@ Multiple scripts can asynchronously be loaded by passing an Array of `lazyLoadCS
 ```
 
 
-
 ## See Also
  - [`lazyload-script`](https://github.com/jpdevries/lazyload-script/#lazyload-script)
 
