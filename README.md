@@ -63,7 +63,7 @@ const promises = [
 
 
 Promise.all(promises).then(() => {
-  // React is ready, maybe load your component with lazyLoadCSS() now?
+  font awesome and weather icons style sheets are loaded now!
 });
 ```
 
