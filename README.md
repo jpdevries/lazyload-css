@@ -68,7 +68,7 @@ Promise.all(promises).then(() => {
 ```
 
 ## See Also
- - [`lazyload-js`](https://github.com/jpdevries/lazyload-js/#lazyload-js)
+ - [`lazyload-script`](https://github.com/jpdevries/lazyload-script/#lazyload-script)
 
 ## ✅ Getting Started
 We're going to use `yarn` so make sure that is installed.
