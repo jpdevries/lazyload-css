@@ -1,0 +1,36 @@
+{
+  "name": "lazyload-css",
+  "main": ["dist/lazyload-css.0.0.0.js","dist/lazyload-css.0.0.0.min.js"],
+  "version": "0.0.0",
+  "homepage": "https://github.com/jpdevries/lazyload-css",
+  "authors": [
+    "JP DeVries <mail@devries.jp>"
+  ],
+  "moduleType": [
+    "amd",
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "lazy",
+    "load",
+    "lazyload",
+    "css",
+    "stylesheet",
+    "promise"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "poly",
+    "tests",
+    "karma.config.js",
+    "package.json",
+    "paths.js",
+    "webpack.config.js",
+    "yarn.lock"
+  ]
+}

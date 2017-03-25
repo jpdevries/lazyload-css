@@ -107,8 +107,11 @@ module.exports = function lazyLoadCSS(src) {
       }
       link.setAttribute('id', id);
     }
+    link.onload = function (event) {
+      resolve(link);
+    };
     document.querySelector('html > head').appendChild(link);
-    resolve(link);
+    //resolve(link);
   });
 };
 
