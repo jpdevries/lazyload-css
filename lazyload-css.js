@@ -16,6 +16,12 @@ module.exports = function lazyLoadCSS(src, id = undefined, rel = 'stylesheet', t
         return;
       }
       link.setAttribute('id', id);
+    } else {
+      const li = document.head.querySelector(`link[href="${src}"]`);
+      if(li) {
+        resolve(li);
+        return;
+      }
     }
     link.onload = function(event) {
       resolve(link);
