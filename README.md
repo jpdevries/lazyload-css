@@ -1,4 +1,4 @@
-# lazyload-css 😴
+# lazyload-css
 Promise based method for adding a style sheet to the page if it has not already been added
 
 ## Install
@@ -46,26 +46,7 @@ Multiple scripts can asynchronously be loaded by passing an Array of `lazyLoadCS
   });
 ```
 
-Loading common libraries and frameworks from CDNs can be great for leveraging the browser cache, but to keep your experience functional in the event the CDN is reachable, it is recommended to load a local fallback.
 
-For example:
-
-```js
-const promises = [
-  // try to load React from a CDN, fallback to a local copy
-  lazyLoadCSS("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", "font-awesome.min.css").catch((err => (
-    lazyLoadCSS(`./assets/css/vendor/font-awesome.min.css`, "font-awesome.min.css")
-  ))),
-  lazyLoadCSS("https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css", "weather-icons.min.css").catch((err => (
-    lazyLoadCSS(`./assets/css/vendor/weather-icons.min.css`, "weather-icons.min.css")
-  )))
-];
-
-
-Promise.all(promises).then(() => {
-  // React is ready, maybe load your component with lazyLoadCSS() now?
-});
-```
 
 ## See Also
  - [`lazyload-script`](https://github.com/jpdevries/lazyload-script/#lazyload-script)
