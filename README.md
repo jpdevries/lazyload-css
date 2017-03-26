@@ -20,7 +20,7 @@ lazyLoadCSS('css/main.css', 'main').then(() => {
   // main.css is loaded now with an id of main
 })
 ```
-_The id parameter is optional. It is used to ensure that subsequent requests to load a script with that same id immediately resolve. If you omit the id parameter, the DOM will first be queried for a `<link>` with the same `href` attribute, making a new request by appending a new `<link>` tag._
+_The id parameter is optional. It is used to ensure that subsequent requests to load a script with that same id immediately resolve. If you omit the id parameter, the DOM will first be queried for a `<link>` with the same `href` attribute, before making a new request by appending a new `<link>` tag._
 
 _`lazyLoadCSS` uses this id to ensure scripts with the same id are only loaded once. This allows web components to request dependencies with `lazyLoadCSS` and rest assured the sheets will only be loaded once regardless of how many times they are requested._
 
