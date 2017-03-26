@@ -1,4 +1,4 @@
-module.exports = function lazyLoadCSS(src, id = undefined, rel = 'stylesheet', type = 'text/css', media = 'all') {
+module.exports = function lazyLoadCSS(src, id = undefined, media = 'all', rel = 'stylesheet', type = 'text/css') {
   return new Promise(function(resolve, reject) {
     if(!src) {
       throw new Error('src parameter must be specified');

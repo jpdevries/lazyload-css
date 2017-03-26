@@ -85,9 +85,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 module.exports = function lazyLoadCSS(src) {
   var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-  var rel = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'stylesheet';
-  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'text/css';
-  var media = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'all';
+  var media = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'all';
+  var rel = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'stylesheet';
+  var type = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'text/css';
 
   return new Promise(function (resolve, reject) {
     if (!src) {

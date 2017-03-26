@@ -22,8 +22,8 @@ const lazyLoadCSS = require('lazyLoadCSS');
 #### VanillaJS Weight
 | Script        | Disk Size           | GZIP  |
 | ------------- | ------------- | ----- |
-| `lazyload-css.0.0.3.js`      | `4.26kB`      |   `1.33kB` |
-| `lazyload-css.0.0.3.min.js`      | `1.56kB`      |   `702b` |
+| `lazyload-css.0.0.4.js`      | `4.26kB`      |   `1.33kB` |
+| `lazyload-css.0.0.4.min.js`      | `1.56kB`      |   `702b` |
 
 The UMD module wrapper weights more than the `lazyLoadCSS()` method itself.  
 If you want to go rogue, you can [load directly from source](https://github.com/jpdevries/lazyload-css/blob/master/lazyload-css.js).
