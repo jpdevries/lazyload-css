@@ -26,7 +26,6 @@ module.exports = function lazyLoadCSS(src, id = undefined, rel = 'stylesheet', t
     link.onload = function(event) {
       resolve(link);
     }
-    document.querySelector('html > head').appendChild(link);
-    //resolve(link);
+    document.head.appendChild(link);
   })
 }

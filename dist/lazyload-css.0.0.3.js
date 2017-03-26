@@ -116,8 +116,7 @@ module.exports = function lazyLoadCSS(src) {
     link.onload = function (event) {
       resolve(link);
     };
-    document.querySelector('html > head').appendChild(link);
-    //resolve(link);
+    document.head.appendChild(link);
   });
 };
 
