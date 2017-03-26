@@ -16,7 +16,7 @@ bower install lazyload-css
 When used with `require()` you'll notice very little weight is added to your bundle. 
 
 ```js
-var lazyLoadCSS = require('lazyLoadCSS');
+const lazyLoadCSS = require('lazyLoadCSS');
 ```
 
 #### VanillaJS Weight
