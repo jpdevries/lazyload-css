@@ -1,4 +1,4 @@
-# lazyload-css
+# lazyload-css 😴 &middot; [![Build Status](https://travis-ci.org/jpdevries/lazyload-css.svg?branch=master)](https://travis-ci.org/jpdevries/lazyload-css) [![npm version](https://badge.fury.io/js/lazyload-css.svg)](https://badge.fury.io/js/lazyload-css)
 Promise based method for adding a style sheet to the page if it has not already been added
 
 ## Install
