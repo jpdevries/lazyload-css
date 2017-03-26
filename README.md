@@ -11,6 +11,20 @@ yarn add lazyload-css
 bower install lazyload-css
 ```
 
+## Weigh In
+#### Imported Weight 
+When used with `require()` you'll notice very little weight is added to your bundle. 
+
+```js
+var lazyLoadCSS = require('lazyLoadCSS');
+```
+
+#### VanillaJS Weight
+| Script        | Disk Size           | GZIP  |
+| ------------- | ------------- | ----- |
+| `lazyload-css.0.0.3.js`      | `4.26kB`      |   `1.33kB` |
+| `lazyload-css.0.0.3.min.js`      | `1.56kB`      |   `702b` |
+
 ## Usage
 
 `lazyLoadScript` accepts two parameters. The path to the script to load and an id.
