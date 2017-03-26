@@ -1,6 +1,6 @@
 {
   "name": "lazyload-css",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Promise based method for adding a style sheet to the page if it has not already been added",
   "main": "lazyload-css.js",
   "scripts": {
@@ -39,6 +39,8 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.4",
+    "phantomjs-polyfill-object-assign": "^0.0.2",
+    "promise-polyfill": "^6.0.2",
     "unminified-webpack-plugin": "^1.2.0",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"

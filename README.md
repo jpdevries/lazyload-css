@@ -22,19 +22,19 @@ const lazyLoadCSS = require('lazyLoadCSS');
 #### VanillaJS Weight
 | Script        | Disk Size           | GZIP  |
 | ------------- | ------------- | ----- |
-| `lazyload-css.0.0.4.js`      | `4.26kB`      |   `1.33kB` |
-| `lazyload-css.0.0.4.min.js`      | `1.56kB`      |   `702b` |
+| `lazyload-css.0.0.7.js`      | `4.36kB`      |   `1.39kB` |
+| `lazyload-css.0.0.7.min.js`      | `1.47kB`      |   `718b` |
 
-The UMD module wrapper weights more than the `lazyLoadCSS()` method itself.  
+The UMD module wrapper weighs more than the `lazyLoadCSS()` method itself.  
 If you want to go rogue, you can [load directly from source](https://github.com/jpdevries/lazyload-css/blob/master/lazyload-css.js).
 
 ## Usage
 
-`lazyLoadCSS` accepts up to five parameters. The path to the script to load, an optional id, an optional `media` attiribute value, an optional `rel` attiribute value, and an optional `type` attiribute value.
+`lazyLoadCSS` accepts two parameters. The path to the script to load and an optional `id` or configuration Object.
 
 ```js
-lazyLoadCSS('css/main.css', 'main', 'screen').then(() => {
-  // main.css is loaded now with an id of main and a media of screen
+lazyLoadCSS('css/main.css', 'main').then(() => {
+  // main.css is loaded now with an id of main
 })
 ```
 _The id parameter is optional. It is used to ensure that subsequent requests to load a script with that same id immediately resolve. If you omit the id parameter, the DOM will first be queried for a `<link>` with the same `href` attribute, before making a new request by appending a new `<link>` tag._
@@ -62,7 +62,7 @@ lazyLoadCSS('main.css', 'main').then(() => {
 });
 ```
 
-Multiple scripts can asynchronously be loaded by passing an Array of `lazyLoadCSS` promises to `Promise.all()`.
+Multiple stylesheets can be asynchronously loaded by passing an Array of `lazyLoadCSS` promises to `Promise.all()`.
 
 ```js
   Promise.all([
@@ -71,6 +71,41 @@ Multiple scripts can asynchronously be loaded by passing an Array of `lazyLoadCS
   ]).then(() => {
     // stylesheets are loaded now
   });
+```
+
+## Configuration
+
+`lazyLoadCSS` accepts two parameters. The path to the script to load and an optional `id` or configuration Object.
+
+| Option        | Default           | Description  |
+| ------------- | ------------- | ----- |
+| `id`      | `undefined`      |   Used to ensure the same stylesheet isn't added twice |
+| `media`      | `'all'`      |   `media` attribute of the `<link>` to be added |
+| `rel`      | `'stylesheet'`      |   `rel` attribute of the `<link>` to be added |
+| `type`      | `text/css`      |   `type` attribute of the `<link>` to be added |
+| `force`      | `false`      |   If true forces an asset to be loaded even if another with the same `id` or `href` are found |
+
+In the below example, unless `lazyLoadCSS` already loaded a `<link>` with the same `id` or `href`, `<link type="text/css" rel="stylesheet" media="all" href="main.css" />` will be appended to `document.head`.
+
+```js
+lazyLoadCSS('main.css', {
+  id: 'main',
+  media: 'screen'
+}).then((link) => {
+  // link is either the newly added stylesheet or the one that was already there
+});
+```
+
+In the next example, a stylesheet will forcefully be added regardless of if one with the same `href` or `id` already exists.
+
+```js
+lazyLoadCSS('print.css', {
+  id: 'print',
+  media: 'print',
+  force: true
+}).then((link) => {
+  // link is the newly added stylesheet
+});
 ```
 
 

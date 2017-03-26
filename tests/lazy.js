@@ -12,7 +12,9 @@ describe("lazyLoadCSS", function () {
   });
 
   it("should append a stylesheet to the <head>", function (done) {
-    lazyLoadCSS(href, id).then(function (sheet) {
+    lazyLoadCSS(href, {
+      id: id
+    }).then(function (sheet) {
       expect(!!document.getElementById('' + id)).toBe(true);
       done();
     }).catch(function (err) {
@@ -22,16 +24,36 @@ describe("lazyLoadCSS", function () {
   });
 
   it("should not append the same script to the DOM more than once", function (done) {
-    lazyLoadCSS(href, id).then(function () {
-      lazyLoadCSS(href, id).then(function () {
+    lazyLoadCSS(href, {
+      id: id
+    }).then(function () {
+      lazyLoadCSS(href, {
+        id: id
+      }).then(function () {
         expect(document.head.querySelectorAll('link[id="' + id + '"]').length).toBe(1);
         done();
       });
     });
   });
 
+  it("should append the same script to the DOM more than once if forced to", function (done) {
+    lazyLoadCSS(href, {
+      id: id
+    }).then(function () {
+      lazyLoadCSS(href, {
+        id: id,
+        force: true
+      }).then(function () {
+        expect(document.head.querySelectorAll('link[id="' + id + '"]').length > 1).toBe(true);
+        done();
+      });
+    });
+  });
+
   it("should add a media attribute", function(done) {
-    lazyLoadCSS(href, id).then(function (sheet) {
+    lazyLoadCSS(href, {
+      id: id
+    }).then(function (sheet) {
       expect(document.getElementById(id).getAttribute('media')).toBe('all');
       done();
     }).catch(function (err) {
@@ -44,7 +66,10 @@ describe("lazyLoadCSS", function () {
     const id = 'media';
     if(document.getElementById(id)) document.getElementById(id).remove();
 
-    lazyLoadCSS(href, id, 'screen').then(function (sheet) {
+    lazyLoadCSS(href, {
+      id: id,
+      media: 'screen'
+    }).then(function (sheet) {
       expect(document.getElementById(id).getAttribute('media')).toBe('screen');
       if(document.getElementById(id)) document.getElementById(id).remove();
       done();
@@ -57,7 +82,11 @@ describe("lazyLoadCSS", function () {
   it("should add a configurable rel attribute", function(done) {
     const id = 'rel';
 
-    lazyLoadCSS(href, id, 'all', 'stylesheet').then(function (sheet) {
+    lazyLoadCSS(href, {
+      id: id,
+      media: 'all',
+      rel: 'stylesheet'
+    }).then(function (sheet) {
       expect(document.getElementById(id).getAttribute('rel')).toBe('stylesheet');
       done();
     }).catch(function (err) {
@@ -69,10 +98,23 @@ describe("lazyLoadCSS", function () {
   it("should add a configurable type attribute", function(done) {
     const id = 'type';
 
-    lazyLoadCSS(href, id, undefined, undefined, 'text/css').then(function (sheet) {
+    lazyLoadCSS(href, {
+      id: id,
+      type: 'text/css'
+    }).then(function (sheet) {
       expect(document.getElementById(id).getAttribute('type')).toBe('text/css');
       done();
     }).catch(function (err) {
+      fail(err);
+      done();
+    });
+  });
+
+  it("should support a string id as the second parameter", function(done) {
+    lazyLoadCSS(href, 'string').then(function(sheet) {
+      expect(sheet.getAttribute('id')).toBe('string');
+      done();
+    }).catch(function(err) {
       fail(err);
       done();
     });

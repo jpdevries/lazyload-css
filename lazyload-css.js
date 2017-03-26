@@ -1,17 +1,28 @@
-module.exports = function lazyLoadCSS(src, id = undefined, media = 'all', rel = 'stylesheet', type = 'text/css') {
+module.exports = function lazyLoadCSS(src, opts = {}) {
   return new Promise(function(resolve, reject) {
     if(!src) {
       throw new Error('src parameter must be specified');
       return;
     }
 
-    var link = document.createElement('link');
+    const defaults = {
+      media: 'all',
+      rel: 'stylesheet',
+      type: 'text/css',
+      force: false
+    };
+
+    const {id, media, rel, type, force} = Object.assign({}, defaults, (typeof opts === 'string') ? {
+      id: opts
+    } : opts);
+
+    const link = document.createElement('link');
     link.setAttribute('rel', rel);
     link.setAttribute('type', type);
     link.setAttribute('href', src);
     link.setAttribute('media', media);
     if(id) {
-      if(document.getElementById(id)) {
+      if(!force && document.getElementById(id)) {
         resolve(document.getElementById(id));
         return;
       }

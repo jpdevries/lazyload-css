@@ -84,10 +84,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 module.exports = function lazyLoadCSS(src) {
-  var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-  var media = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'all';
-  var rel = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'stylesheet';
-  var type = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'text/css';
+  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new Promise(function (resolve, reject) {
     if (!src) {
@@ -95,13 +92,29 @@ module.exports = function lazyLoadCSS(src) {
       return;
     }
 
+    var defaults = {
+      media: 'all',
+      rel: 'stylesheet',
+      type: 'text/css',
+      force: false
+    };
+
+    var _Object$assign = Object.assign({}, defaults, typeof opts === 'string' ? {
+      id: opts
+    } : opts),
+        id = _Object$assign.id,
+        media = _Object$assign.media,
+        rel = _Object$assign.rel,
+        type = _Object$assign.type,
+        force = _Object$assign.force;
+
     var link = document.createElement('link');
     link.setAttribute('rel', rel);
     link.setAttribute('type', type);
     link.setAttribute('href', src);
     link.setAttribute('media', media);
     if (id) {
-      if (document.getElementById(id)) {
+      if (!force && document.getElementById(id)) {
         resolve(document.getElementById(id));
         return;
       }
