@@ -30,11 +30,11 @@ If you want to go rogue, you can [load directly from source](https://github.com/
 
 ## Usage
 
-`lazyLoadScript` accepts two parameters. The path to the script to load and an id.
+`lazyLoadCSS` accepts up to five parameters. The path to the script to load, an optional id, an optional `media` attiribute value, an optional `rel` attiribute value, and an optional `type` attiribute value.
 
 ```js
-lazyLoadCSS('css/main.css', 'main').then(() => {
-  // main.css is loaded now with an id of main
+lazyLoadCSS('css/main.css', 'main', 'screen').then(() => {
+  // main.css is loaded now with an id of main and a media of screen
 })
 ```
 _The id parameter is optional. It is used to ensure that subsequent requests to load a script with that same id immediately resolve. If you omit the id parameter, the DOM will first be queried for a `<link>` with the same `href` attribute, before making a new request by appending a new `<link>` tag._
