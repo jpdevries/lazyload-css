@@ -1,6 +1,6 @@
 {
   "name": "lazyload-css",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Promise based method for adding a style sheet to the page if it has not already been added",
   "main": "lazyload-css.js",
   "scripts": {
