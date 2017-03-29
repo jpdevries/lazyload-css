@@ -8,7 +8,7 @@ describe("lazyLoadCSS", function () {
   });
 
   it("returns a promise", function () {
-    expect(lazyLoadCSS(href, id)).toEqual(jasmine.any(Promise));
+    expect(lazyLoadCSS(href)).toEqual(jasmine.any(Promise));
   });
 
   it("should append a stylesheet to the <head>", function (done) {
