@@ -8,7 +8,7 @@ yarn add lazyload-css
 ```
 
 ```bash
-bower install lazyload-css
+bower install lazyload-css --save
 ```
 
 ## Weigh In
