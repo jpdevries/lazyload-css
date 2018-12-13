@@ -1,13 +1,14 @@
 {
   "name": "lazyload-css",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Promise based method for adding a style sheet to the page if it has not already been added",
-  "main": "dist/lazyload-css.1.0.4.js",
+  "main": "dist/lazyload-css.1.0.5.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start karma.config.js --single-run --browsers PhantomJS",
     "testserve": "karma start karma.config.js --verbose",
     "webpack": "rm -rf dist && webpack",
-    "gzipped": "gzipped dist/lazyload-css.*.js && gzipped dist/lazyload-css.*.min.js"
+    "gzipped": "gzipped dist/lazyload-css.*.js && gzipped dist/lazyload-css.*.min.js",
+    "postpack": "npm run webpack"
   },
   "repository": {
     "type": "git",

@@ -28,7 +28,7 @@ module.exports = function lazyLoadCSS(src, opts = {}) {
       }
       link.setAttribute('id', id);
     } else {
-      const li = document.head.querySelector(`link[href="${src}"]`);
+      const li = document.head.querySelector(`link[rel="${rel}"][href="${src}"]`);
       if(li) {
         resolve(li);
         return;

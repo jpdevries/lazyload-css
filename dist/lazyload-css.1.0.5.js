@@ -120,7 +120,7 @@ module.exports = function lazyLoadCSS(src) {
       }
       link.setAttribute('id', id);
     } else {
-      var li = document.head.querySelector('link[href="' + src + '"]');
+      var li = document.head.querySelector('link[rel="' + rel + '"][href="' + src + '"]');
       if (li) {
         resolve(li);
         return;
